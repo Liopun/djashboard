@@ -1,0 +1,208 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block title %} User Profile {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="content">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="image">
+            <img src="{% static 'core/img/damir-bosnjak.jpg' %}" alt="...">
+          </div>
+          <div class="card-body">
+            <div class="author">
+              <a href="#">
+                <img class="avatar border-gray" src="{% static 'core/img/logo-small.png' %}" alt="...">
+                <h5 class="title">{{request.user.first_name}} {{request.user.last_name}}</h5>
+              </a>
+              <p class="description">
+                @{{request.user.username}}
+              </p>
+            </div>
+            <p class="description text-center">
+              &quot;{{profile.about}}&quot;
+            </p>
+          </div>
+          <div class="card-footer">
+            <hr>
+            <div class="button-container">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                  <h5>12
+                    <br>
+                    <small>Files</small>
+                  </h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                  <h5>2GB
+                    <br>
+                    <small>Used</small>
+                  </h5>
+                </div>
+                <div class="col-lg-3 mr-auto">
+                  <h5>24,6$
+                    <br>
+                    <small>Spent</small>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Team Members</h4>
+          </div>
+          <div class="card-body">
+            <ul class="list-unstyled team-members">
+              <li>
+                <div class="row">
+                  <div class="col-md-2 col-2">
+                    <div class="avatar">
+                      <img src="{% static 'core/img/faces/ayo-ogunseinde-2.jpg' %}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-7">
+                    DJ Khaled
+                    <br />
+                    <span class="text-muted">
+                      <small>Offline</small>
+                    </span>
+                  </div>
+                  <div class="col-md-3 col-3 text-right">
+                    <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-md-2 col-2">
+                    <div class="avatar">
+                      <img src="{% static 'core/img/faces/joe-gardner-2.jpg' %}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                  </div>
+                  <div class="col-md-7 col-7">
+                    Creative Tim
+                    <br />
+                    <span class="text-success">
+                      <small>Available</small>
+                    </span>
+                  </div>
+                  <div class="col-md-3 col-3 text-right">
+                    <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col-md-2 col-2">
+                    <div class="avatar">
+                      <img src="{% static 'core/img/faces/clem-onojeghuo-2.jpg' %}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                  </div>
+                  <div class="col-ms-7 col-7">
+                    Flume
+                    <br />
+                    <span class="text-danger">
+                      <small>Busy</small>
+                    </span>
+                  </div>
+                  <div class="col-md-3 col-3 text-right">
+                    <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card card-user">
+          <div class="card-header">
+            <h5 class="card-title">Edit Profile</h5>
+          </div>
+          <div class="card-body">
+            <form action="updest" id="user-form" method="POST">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-5 pr-1">
+                  <div class="form-group">
+                    <label>Company</label>
+                    <input id="lg_company" name="company" type="text" class="form-control" placeholder="Company" value="{{profile.company}}">
+                  </div>
+                </div>
+                <div class="col-md-3 px-1">
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input id="lg_username" name="username" type="text" class="form-control" disabled="" placeholder="Username" value="{{request.user.username}}">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input id="lg_email" name="email" type="email" class="form-control" placeholder="Email" value="{{request.user.email}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input id="lg_firstname" name="firstname" type="text" class="form-control" placeholder="First Name" value="{{request.user.first_name}}">
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input id="lg_lastname" name="lastname" type="text" class="form-control" placeholder="Last Name" value="{{request.user.last_name}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input id="lg_address" name="address" type="text" class="form-control" placeholder="Home Address" value="{{profile.address}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>About Me</label>
+                    <textarea id="lg_about" name="aboutme" class="form-control textarea">{{profile.about}}</textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="ml-auto mr-auto">
+                  {% for message in messages %}
+                      <a>{{message}}</a>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="update ml-auto mr-auto">
+                  <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
+         
