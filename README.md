@@ -1,6 +1,6 @@
 # [Django Dashboard](http://djashboard.herokuapp.com)
 
-**Open-Source Admin Dashboard** coded in **[Django Framework](https://www.djangoproject.com/)** on top of **Light Dashboard** design (free version) - Provided by **AppSeed** [Web App Generator](https://appseed.us/app-generator).
+**Open-Source Admin Dashboard** coded in **[Django Framework](https://www.djangoproject.com/)** on top of **Light Dashboard** design (free version).
 
 <br />
 
