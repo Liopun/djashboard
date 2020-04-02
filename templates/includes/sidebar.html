@@ -20,7 +20,7 @@
         </a>
     </div>
     <div class="sidebar-wrapper">
-        {% if user.is_authenticated %}
+        {% if request.user.is_authenticated %}
             <ul class="nav">
                 <li class="{% ifequal request.path '/core/dashboard.html' %} active {% endifequal%}">
                     <a href="./dashboard.html">
