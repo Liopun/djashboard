@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '9=)1gf9&&(o1+2+8e@8m^kdakti2j6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['banana-tart-41530.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['djashboard.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
